@@ -3,6 +3,10 @@ package com.coolweatherpractice.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.coolweatherpractice.util.SupportMultipleScreensUtil;
+
+import org.litepal.LitePal;
+
 /**
  * Created by hcywff on 2017/1/15.
  */
@@ -32,9 +36,12 @@ public class MyApplication extends Application {
         return inst;
     }
 
+
     @Override
     public void onCreate() {
         super.onCreate();
         globalContext = getApplicationContext();
+        LitePal.initialize(this);
+        SupportMultipleScreensUtil.init(globalContext);
     }
 }
